@@ -1,0 +1,83 @@
+{{define "content"}}
+<div class="bg-white rounded-xl shadow-lg p-8 space-y-6" id="config-form-container">
+    <div class="text-center">
+      <h1 class="text-2xl font-semibold text-slate-700">Goblin Configuration</h1>
+      <p class="text-sm text-slate-500 mt-1">Update your config</p>
+    </div>
+    {{if .Error}}
+      {{template "save-failed.html" .}}
+    {{end}}
+    <div>
+      <form hx-post="/gablin/save" hx-swap="outerHTML" hx-target="#config-form-container">
+        <div class="space-y-4">
+          <fieldset>
+            <legend>Delay</legend>
+            <div>
+            <label for="delay_enable" class="">Enabed</label>
+            <input
+              id="delay_enable"
+              name="delay_enable"
+              type="checkbox"
+              {{.DelayEnabled}}
+              role="switch"
+              class=""
+            />
+            <label for="delay_min" class>Min delay (ms)</label>
+            <input 
+            id="delay_min"
+            name="delay_min"
+            type="number"
+            value="{{.DelayMin}}"
+            class=""
+            />
+            <label for="delay_max" class>Max delay (ms)</label>
+            <input 
+            id="delay_max"
+            name="delay_max"
+            type="number"
+            value="{{.DelayMax}}"
+            class=""
+            />
+          </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Failure</legend>
+            <div>
+            <label for="failure_enable" class="">Enabed</label>
+            <input
+              id="failure_enable"
+              name="failure_enable"
+              type="checkbox"
+              {{.FailureEnabled}}
+              role="switch"
+              class=""
+            />
+          </div>
+          </fieldset>
+          
+          <label for="enable_overwrite" class="">Overwrite Config</label>
+            <input
+              id="enable_overwrite"
+              name="enable_overwrite"
+              type="checkbox"
+              role="switch"
+              class=""
+            />
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            <span class="htmx-indicator">Saving...</span>
+            <span>Save</span>
+          </button>
+        </div>
+      </form>
+    </div>
+    {{template "auth-footer-link" dict
+      "Label" "this needsto be change or re-used"
+      "URL" "/where do you go"
+      "LinkText" "Hi Bye!"
+    }}
+  </div>
+{{end}}

@@ -1,0 +1,1 @@
+The structure is overkill for such a small application but I couldn't help myself

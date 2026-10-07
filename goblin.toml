@@ -1,0 +1,17 @@
+[delay_config]
+[delay_config.transport]
+enabled = false
+mode = ''
+min = 0
+max = 0
+response_delay = 0
+
+[delay_config.response]
+enabled = false
+mode = ''
+min = 0
+max = 0
+response_delay = 0
+
+[fail_requests]
+enabled = false
